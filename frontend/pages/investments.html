@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investments - Trust Union Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body class="light-theme">
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/">Trust Union Bank</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/personal-banking" class="nav-link">Personal Banking</a></li>
+                    <li><a href="/investments" class="nav-link active">Investments</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Investments</h1>
+                <p>Grow your wealth with our investment products</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Fixed Deposits</h3>
+                    <p>Secure your savings with fixed deposits offering competitive interest rates.</p>
+                    <ul class="feature-list">
+                        <li>Interest rates up to 7.5%</li>
+                        <li>Flexible tenure options</li>
+                        <li>Premature withdrawal facility</li>
+                    </ul>
+                    <a href="/fd/create" class="btn btn-primary">Open FD</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Recurring Deposits</h3>
+                    <p>Build savings habit with monthly recurring deposits.</p>
+                    <ul class="feature-list">
+                        <li>Start with as low as ₹500</li>
+                        <li>Flexible deposit amounts</li>
+                        <li>Competitive interest rates</li>
+                    </ul>
+                    <a href="/rd/create" class="btn btn-primary">Open RD</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Mutual Funds</h3>
+                    <p>Diversify your portfolio with professionally managed mutual funds.</p>
+                    <ul class="feature-list">
+                        <li>Wide range of schemes</li>
+                        <li>Expert fund management</li>
+                        <li>Systematic Investment Plans</li>
+                    </ul>
+                    <a href="/mutual-funds" class="btn btn-primary">Explore</a>
+                </div>
+            </div>
+
+            <section class="info-section">
+                <h2>Investment Services</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>FD/RD Rates</h4>
+                        <p>Check current interest rates for fixed and recurring deposits.</p>
+                        <a href="/fd-rd-rates" class="info-link">View Rates →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Close FD</h4>
+                        <p>Close your fixed deposit before maturity if needed.</p>
+                        <a href="/fd/close" class="info-link">Close FD →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Close RD</h4>
+                        <p>Close your recurring deposit account.</p>
+                        <a href="/rd/close" class="info-link">Close RD →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Chat Bot Trigger -->
+    <div class="chat-bot-trigger" id="chatBotTrigger">
+        <div class="bot-logo-container">
+            <div class="glow-effect"></div>
+            <div class="bot-icon">🤖</div>
+            <span class="bot-label">Trusti</span>
+        </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3 class="bot-name">Trusti</h3>
+                        <p class="session-id" id="sessionId">Session: Loading...</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hello! I'm Trusti, your banking assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-input-actions">
+                <button class="lang-button" id="langButton" title="Change Language">🌐</button>
+                <button class="preference-button" id="preferenceButton" title="Preferences">⚙️</button>
+            </div>
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." />
+                <button class="voice-button" id="voiceButton" title="Voice Input">🎤</button>
+                <button class="send-button" id="sendButton" title="Send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards - Trust Union Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body class="light-theme">
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/">Trust Union Bank</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/personal-banking" class="nav-link">Personal Banking</a></li>
+                    <li><a href="/loans" class="nav-link">Loans</a></li>
+                    <li><a href="/cards" class="nav-link active">Cards</a></li>
+                    <li><a href="/investments" class="nav-link">Investments</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Credit & Debit Cards</h1>
+                <p>Secure and convenient payment solutions</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>Debit Cards</h3>
+                    <p>Access your money anytime, anywhere with our secure debit cards.</p>
+                    <ul class="feature-list">
+                        <li>Zero annual fees</li>
+                        <li>ATM withdrawals worldwide</li>
+                        <li>Contactless payments</li>
+                        <li>24/7 fraud protection</li>
+                    </ul>
+                    <a href="/cards/apply?type=debit" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💎</div>
+                    <h3>Credit Cards</h3>
+                    <p>Enjoy rewards, cashback, and exclusive offers with our credit cards.</p>
+                    <ul class="feature-list">
+                        <li>Rewards on every purchase</li>
+                        <li>Cashback up to 5%</li>
+                        <li>Airport lounge access</li>
+                        <li>Zero liability on fraud</li>
+                    </ul>
+                    <a href="/cards/apply?type=credit" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+
+            <section class="info-section">
+                <h2>Card Services</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Card Activation</h4>
+                        <p>Activate your new debit or credit card.</p>
+                        <a href="/cards/activate" class="info-link">Activate Card →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Card Limits</h4>
+                        <p>View and manage your card spending limits.</p>
+                        <a href="/cards/limits" class="info-link">Manage Limits →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>PIN Management</h4>
+                        <p>Change or reset your card PIN securely.</p>
+                        <a href="/cards/pin" class="info-link">Manage PIN →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Block/Lost Card</h4>
+                        <p>Report lost or stolen card immediately.</p>
+                        <a href="/cards/block" class="info-link">Report Now →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Card Replacement</h4>
+                        <p>Request a replacement for damaged card.</p>
+                        <a href="/cards/replace" class="info-link">Request →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Delivery Status</h4>
+                        <p>Track your card delivery status.</p>
+                        <a href="/cards/delivery" class="info-link">Track →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Chat Bot Trigger -->
+    <div class="chat-bot-trigger" id="chatBotTrigger">
+        <div class="bot-logo-container">
+            <div class="glow-effect"></div>
+            <div class="bot-icon">🤖</div>
+            <span class="bot-label">Trusti</span>
+        </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3 class="bot-name">Trusti</h3>
+                        <p class="session-id" id="sessionId">Session: Loading...</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hello! I'm Trusti, your banking assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-input-actions">
+                <button class="lang-button" id="langButton" title="Change Language">🌐</button>
+                <button class="preference-button" id="preferenceButton" title="Preferences">⚙️</button>
+            </div>
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." />
+                <button class="voice-button" id="voiceButton" title="Voice Input">🎤</button>
+                <button class="send-button" id="sendButton" title="Send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

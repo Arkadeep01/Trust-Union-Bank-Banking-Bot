@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Fraud - Trust Union Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body class="light-theme">
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/">Trust Union Bank</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/fraud-report" class="nav-link active">Report Fraud</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Report Fraud or Unauthorized Transaction</h1>
+                <p>Your security is our priority</p>
+            </div>
+
+            <div class="alert-box">
+                <h3>⚠️ Important</h3>
+                <p>If you notice any unauthorized transaction or suspicious activity, please report it immediately. We are available 24/7 to assist you.</p>
+            </div>
+
+            <div class="form-container">
+                <form id="fraudReportForm" class="report-form">
+                    <div class="form-group">
+                        <label for="transactionType">Type of Issue</label>
+                        <select id="transactionType" name="transactionType" required>
+                            <option value="">Select...</option>
+                            <option value="unauthorized">Unauthorized Transaction</option>
+                            <option value="fraud">Fraudulent Activity</option>
+                            <option value="phishing">Phishing/Suspicious Email</option>
+                            <option value="card">Lost/Stolen Card</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number (if applicable)</label>
+                        <input type="text" id="accountNumber" name="accountNumber" placeholder="Enter account number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transactionDate">Transaction Date</label>
+                        <input type="date" id="transactionDate" name="transactionDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (if applicable)</label>
+                        <input type="number" id="amount" name="amount" placeholder="Enter amount">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" rows="5" required placeholder="Please provide details about the incident"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" required placeholder="Your contact number">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Submit Report</button>
+                </form>
+            </div>
+
+            <section class="info-section">
+                <h2>Emergency Contacts</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>24/7 Helpline</h4>
+                        <p>📞 +91 1800-0222-0001</p>
+                        <p>Available round the clock</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Email Support</h4>
+                        <p>✉️ fraud@trustunionbank.com</p>
+                        <p>Response within 2 hours</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>WhatsApp</h4>
+                        <p>💬 +91 98765-43210</p>
+                        <p>Quick assistance via chat</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Chat Bot Trigger -->
+    <div class="chat-bot-trigger" id="chatBotTrigger">
+        <div class="bot-logo-container">
+            <div class="glow-effect"></div>
+            <div class="bot-icon">🤖</div>
+            <span class="bot-label">Trusti</span>
+        </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3 class="bot-name">Trusti</h3>
+                        <p class="session-id" id="sessionId">Session: Loading...</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hello! I'm Trusti, your banking assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-input-actions">
+                <button class="lang-button" id="langButton" title="Change Language">🌐</button>
+                <button class="preference-button" id="preferenceButton" title="Preferences">⚙️</button>
+            </div>
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." />
+                <button class="voice-button" id="voiceButton" title="Voice Input">🎤</button>
+                <button class="send-button" id="sendButton" title="Send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        document.getElementById('fraudReportForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for reporting. Our security team will contact you shortly.');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,818 @@
+version: "3.1"
+
+intents:
+
+# 🔹 Account Management
+  - open_account #M
+  - provide_account_type
+  - minimum_balance #M
+  - account_status 
+  - close_account
+  - dormant_account_reactivation
+  - nominee_details
+  - joint_account_info
+  - update_personal_details 
+  - account_number_lost 
+
+  # 🔹 Balance & Transactions
+  - check_balance #M
+  - request_mini_statement #M
+  - transaction_history 
+  - transaction_status
+  - fund_transfer
+  - transfer_limit
+  - wrong_transfer
+  - reversal_time
+  - bank_charges
+  - auto_debit_enquiry
+
+  # 🔹 Cards
+  - apply_debit_card 
+  - apply_credit_card 
+  - card_delivery_status 
+  - block_card 
+  - unblock_card 
+  - set_pin
+  - card_limit_change
+  - international_usage
+  - card_expiry_renewal
+  - card_declined_reason
+
+  # 🔹 Deposits & Loans
+  - open_fd 
+  - close_fd 
+  - fd_interest_rate
+  - apply_loan 
+  - provide_loan_type 
+  - loan_eligibility
+  - loan_interest_rate
+  - loan_repayment
+  - emi_due_date
+  - loan_statement
+  - loan_default_penalty
+
+  # 🔹 Digital & Online Banking
+  - register_netbanking 
+  - register_mobilebanking 
+  - reset_password 
+  - two_factor_auth
+  - upi_registration
+  - upi_limit
+  - upi_failed_transaction
+  - security_settings
+  - update_mpin 
+  - email_alerts
+
+  # 🔹 Statements & Certificates
+  - download_statement
+  - interest_certificate
+  - tds_details
+  - check_passbook_status
+  - duplicate_statement_request 
+
+  # 🔹 Security & Support
+  - report_fraud 
+  - phishing_alert
+  - account_lock
+  - privacy_policy
+  - customer_support_contact
+
+  # 🔹 Education & Awareness
+  - difference_savings_current
+  - ifsc_meaning
+  - swift_code_info
+  - neft_vs_imps_vs_rtgs
+  - nominee_importance
+  - cibil_score
+  - rbi_guidelines
+  - inactive_account_fees
+  - cash_deposit_limit
+  - daily_withdrawal_limit
+
+  # 🔹 Offers & Promotions
+  - credit_card_offers
+  - loan_offers
+  - rewards_points
+  - festive_offers
+  - refer_friend 
+
+  # 🔹 Feedback & Miscellaneous
+  - update_kyc 
+  - branch_locator
+  - working_hours
+  - holiday_list
+  - feedback_complaint 
+  - foreign_exchange
+  - cheque_status
+  - stop_cheque_payment 
+  - cheque_book_request
+  - locker_facility
+
+  # 🔹 Small Talk / Common
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - help
+  - out_of_scope
+  - nlu_fallback
+  - provide_name
+  - provide_balance
+  - provide_phone
+  - provide_email
+  - provide_otp
+  - book_appointment
+  - Emi_opt_personal
+  - bill_payment
+  - request_others_balance
+  - request_human_agent
+
+entities:
+  - name
+  - balance
+  - phone
+  - email
+  - account_type
+  - otp
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+
+  account_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: account_type
+      - type: from_intent
+        intent: provide_account_type
+        value: "{text}"
+      
+
+  balance:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: balance
+      - type: from_intent
+        intent: provide_balance
+        value: "{text}"
+
+  phone:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone
+        intent: provide_phone
+
+  email:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: email
+
+  otp:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        intent: provide_otp
+
+responses:
+
+# Single Turn Convos
+  
+  utter_account_status:
+    - text: |
+        To check your account status, please log in to SmartBank’s net banking or mobile banking app.  
+        You can verify whether your account is active, frozen, or dormant directly from your dashboard.  
+        If you prefer, you can also visit your nearest SmartBank branch for assistance.
+        <br><br>
+        Access SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/" target="_blank">👉 SmartBank Account status</a>
+
+  utter_close_account:
+    - text: |
+        To close your SmartBank account, please visit your home branch with your ID proof, passbook, and cheque book.  
+        Certain account types may also be closed by submitting a written request through the SmartBank online portal.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com/" target="_blank">👉 SmartBank close account</a>
+
+  utter_dormant_account_reactivation:
+    - text: "If your account has become dormant due to inactivity, you can reactivate it by visiting our smart bank branch with valid ID proof and performing a small transaction like a deposit or withdrawal."
+
+  utter_nominee_details:
+    - text: |
+        You can add, view, or update your nominee details through SmartBank’s internet banking portal or by submitting the nomination form (DA1) at your home branch.  
+        Keeping your nominee information updated ensures smooth settlement and security.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com/" target="_blank">👉 SmartBank nominee details</a>
+
+  utter_joint_account_info:
+    - text: |
+        A joint account allows two or more individuals to share ownership and manage the account together.  
+        To open a joint account, all applicants must visit the branch with their KYC documents, photographs, and signatures.  
+        You can also explore SmartBank’s checking account options online.
+        <br><br>
+        Learn more about SmartBank checking accounts:  
+        <a href="https://www.smartbank.com/personal-checking/" target="_blank">👉 SmartBank Joint/Checking Accounts</a>
+
+  utter_transaction_history:
+    - text: |
+        You can easily view your transaction history in our Digital Banking portal.  
+        Here’s how:  
+        1. Log in to your SmartBank Digital Banking account.  
+        2. Navigate to **Accounts** or **Activity**.  
+        3. Select the account whose history you’d like to review—it will show you all past transactions, pending items, and downloadable statements.  
+        4. For detailed search, use the **Filter** and **Date Range** tools.  
+        <br><br>
+        Access your account activity here:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Transaction History</a>
+
+  utter_transaction_status:
+    - text: |
+        You can check the status of your transactions through the **Transaction History** section in your SmartBank mobile banking app or net banking portal.  
+        For pending or failed transactions, please wait a few minutes and try refreshing the status.  
+        If the issue continues, contact customer support with your transaction ID for assistance.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank transaction status</a>
+
+  utter_fund_transfer:
+    - text: |
+        You can transfer funds quickly and securely using NEFT, IMPS, RTGS, UPI, or SmartBank’s Zelle® digital transfer service.  
+        To complete a transfer, make sure you have the recipient’s **account number**, **IFSC code**, and **full name** ready.  
+        
+        If you're using our digital banking system, you can also send money instantly using **Zelle®**.
+        <br><br>
+        Send money safely with Zelle® here:  
+        <a href="https://www.smartbank.com/digital-banking/zelle/" target="_blank">👉 SmartBank Zelle® Transfer</a>
+
+  utter_transfer_limit:
+    - text: |
+        The daily transfer limit depends on your account type and the transfer mode you are using.  
+        IMPS typically allows transfers up to ₹2 lakh per day, while NEFT and RTGS may allow higher limits depending on the bank’s policy.  
+        You can view or modify your transfer limit anytime through your SmartBank net banking settings.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank modify transaction limit</a>
+
+  utter_wrong_transfer:
+    - text: "If you transferred money to the wrong account, immediately contact your bank’s branch or customer support. Provide the transaction ID and details. The reversal process depends on the recipient’s bank’s approval."
+
+  utter_reversal_time:
+    - text: "Refunds for failed transactions typically take between 3 to 7 working days, depending on the payment mode. If it takes longer, please share the transaction reference ID with customer care."
+
+  utter_bank_charges:
+    - text: |
+        SmartBank’s service charges vary based on the type of transaction.  
+        NEFT, IMPS, and RTGS transfers may involve small fees depending on the amount, while UPI transactions are usually free.  
+        You can check the complete list of service charges on the SmartBank website or by contacting customer support.
+        <br><br>
+        View SmartBank charges online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank bank charge</a>
+
+  utter_auto_debit_enquiry:
+    - text: |
+        Auto-debit allows your bills, EMIs, or scheduled payments to be deducted automatically from your SmartBank account.  
+        You can activate, modify, or cancel auto-debit instructions through the SmartBank mobile app, online banking portal, or by submitting a request at your home branch.
+        <br><br>
+        Learn more or access SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank auto debit enquiry</a>
+
+  utter_apply_debit_card:
+    - text: |
+        You can apply for a new SmartBank debit card through the mobile banking app, net banking portal, or by visiting your home branch.  
+        Once your request is submitted, the debit card will be delivered to your registered address within 7–10 working days.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank apply debit card</a>
+
+  utter_apply_credit_card:
+    - text: |
+        To apply for a SmartBank credit card, you can visit our official website or your nearest branch.  
+        You will need your PAN card, income proof, and a valid ID document for eligibility verification.
+        <br><br>
+        Explore credit card options:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank apply credit card</a>
+
+  utter_card_delivery_status:
+    - text: |
+        You can track the delivery status of your debit or credit card through the **Card Services** section in your SmartBank mobile banking app.  
+        If you need help, contact customer support using your registered mobile number.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank delivery status</a>
+
+  utter_block_card:
+    - text: |
+        For your safety, card blocking cannot be processed through chat.  
+        Please call SmartBank’s 24×7 customer support or use the mobile banking app to immediately block your card.
+        <br><br>
+        Need help? Contact support here:  
+        <a href="https://www.smartbank.com/contact/" target="_blank">👉 SmartBank block card</a>
+
+  utter_unblock_card:
+    - text: |
+        To unblock your card, please visit the nearest branch or use your SmartBank mobile banking app after verifying your identity.  
+        This ensures your account stays secure.
+        <br><br>
+        For assistance, visit:  
+        <a href="https://www.smartbank.com/contact/" target="_blank">👉 SmartBank unblock card</a>
+
+  utter_set_pin:
+    - text: |
+        You can set or reset your card PIN through a SmartBank ATM, mobile banking app, or net banking portal.  
+        For your security, never share your PIN with anyone.
+        <br><br>
+        Need help? Reach out here:  
+        <a href="https://www.smartbank.com/contact/" target="_blank">👉 SmartBank Customer Set pin</a>
+
+  utter_card_limit_change:
+    - text: |
+        To change your card’s spending or withdrawal limit, log in to your SmartBank mobile banking app or net banking portal.  
+        You can increase or decrease your card limit instantly.
+        <br><br>
+        For further support, visit:  
+        <a href="https://www.smartbank.com/contact/" target="_blank">👉 SmartBank Customer card limit </a>
+
+  utter_international_usage:
+    - text: |
+        You can enable or disable international transactions from your SmartBank mobile banking app or net banking under **Card Controls**.  
+        Before traveling, ensure that your debit or credit card supports international payments and that the required limits are enabled.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank international usage</a>
+
+  utter_card_expiry_renewal:
+    - text: |
+        SmartBank cards are generally renewed automatically before expiry and delivered to your registered address.  
+        If you haven't received your renewed card, please contact customer support or visit your nearest branch to request a replacement.
+        <br><br>
+        Learn more or access SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank card expiry renewal</a>
+
+  utter_card_declined_reason:
+    - text: "A card transaction may be declined due to insufficient balance, wrong PIN, expired card, or security restrictions. Please check your card’s validity and ensure it’s active for the selected payment mode."
+
+  utter_open_fd:
+    - text: |
+        To open a Fixed Deposit (FD), log in to your SmartBank net banking or mobile banking app and navigate to **Deposit Services**.  
+        You can choose the deposit amount, tenure, and payout frequency online.  
+        You may also visit your nearest SmartBank branch for assistance with opening an FD.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank Open FD</a>
+
+  utter_close_fd:
+    - text: |
+        You can close your Fixed Deposit (FD) through the SmartBank mobile banking app, net banking portal, or by visiting your home branch.  
+        Please note that premature FD closure may result in a small penalty on the interest earned.
+        <br><br>
+        Learn more or access SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank close FD</a>
+
+  utter_fd_interest_rate:
+    - text: "Our current FD interest rates range between 6.5% to 7.5% per annum depending on the tenure and amount. For senior citizens, an additional 0.5% interest is applicable."
+
+  utter_apply_loan:
+    - text: |
+        You can apply for personal, home, or vehicle loans easily through SmartBank’s website or mobile banking app.  
+        The process includes filling in your basic details and uploading the required documents for quick verification.
+        <br><br>
+        Apply online here:  
+        <a href="https://www.smartbank.com/personal-loans/" target="_blank">👉 SmartBank Loan Application</a>
+
+  utter_provide_loan_type:
+    - text: |
+        We offer a variety of loan options including Personal Loan, Home Loan, Education Loan, Vehicle Loan, and Business Loan.  
+        You can explore all available loan types and their features here:
+        <br><br>
+        <a href="https://www.smartbank.com/personal-loans/" target="_blank">👉 SmartBank Loan Options</a>
+
+  utter_loan_eligibility:
+    - text: |
+        Loan eligibility is determined by several factors such as your income, credit score, employment type, and repayment history.  
+        You can check your eligibility instantly using our online loan tools.
+        <br><br>
+        Check your eligibility here:  
+        <a href="https://www.smartbank.com/personal-loans/" target="_blank">👉 SmartBank Loan Eligibility</a>
+
+  utter_loan_interest_rate:
+    - text: |
+        SmartBank’s loan interest rates vary based on the type of loan.  
+        For example:  
+        • Personal Loan – 10.5% per annum  
+        • Home Loan – 8.4% per annum  
+        • Vehicle Loan – 9.0% per annum  
+        For the most updated rates and limited-period offers, please check the official loan rate chart.
+        <br><br>
+        View SmartBank loan details:  
+        <a href="https://www.smartbank.com/personal-loons/" target="_blank">👉 SmartBank Loan Interest rate </a>
+
+  utter_loan_repayment:
+    - text: |
+        You can repay your SmartBank loan through auto-debit, standing instructions, or manual payments via net banking or mobile banking.  
+        You may also prepay or foreclose your loan after the minimum lock-in period, depending on the loan type.
+        <br><br>
+        Learn more about SmartBank loans:  
+        <a href="https://www.smartbank.com/personal-loans/" target="_blank">👉 SmartBank Loan repayment</a>
+
+  utter_emi_due_date:
+    - text: |
+        You can view your EMI due date in the **Loan Accounts** section of your SmartBank mobile banking app or in your monthly e-statement.  
+        It’s recommended to maintain sufficient balance at least one day before the EMI date to avoid penalties.
+        <br><br>
+        Explore SmartBank loan options:  
+        <a href="https://www.smartbank.com/personal-loans/" target="_blank">👉 SmartBank Loan emi due date</a>
+
+  utter_loan_statement:
+    - text: |
+        You can download your detailed loan statement from the **Loan Accounts** section in your SmartBank net banking dashboard.  
+        You may also request a soft copy by contacting customer support.
+        <br><br>
+        Access SmartBank loan page:  
+        <a href="https://www.smartbank.com/personal-loans/" target="_blank">👉 SmartBank Loan statement</a>
+
+  utter_loan_default_penalty:
+    - text: "If you miss an EMI payment, a late payment fee and additional interest may be charged. Repeated defaults can affect your credit score and may lead to legal action."
+
+  utter_register_netbanking:
+    - text: |
+        To register for SmartBank net banking, visit our official online banking portal and click on **New User Registration**.  
+        Enter your account number, registered mobile number, and complete the OTP verification to create your login credentials.
+        <br><br>
+        Start your registration here:  
+        <a href="https://onlinebanking.smartbank.net/login/" target="_blank">👉 SmartBank Net Banking Portal</a>
+
+  utter_register_mobilebanking:
+    - text: |
+        To activate SmartBank mobile banking, download the official SmartBank app from the Google Play Store or Apple App Store.  
+        Open the app, select **New Registration**, and complete verification using your registered mobile number and debit card details.
+        <br><br>
+        Visit the online portal for more assistance:  
+        <a href="https://onlinebanking.smartbank.net/login/" target="_blank">👉 SmartBank Digital Banking</a>
+
+  utter_reset_password:
+    - text: |
+        If you've forgotten your net banking password, visit the SmartBank online banking login page and click **Forgot Password**.  
+        Enter your account details and verify using OTP to securely reset your login password.
+        <br><br>
+        Reset your password here:  
+        <a href="https://onlinebanking.smartbank.net/login/" target="_blank">👉 SmartBank Net Banking reset password</a>
+
+  utter_two_factor_auth:
+    - text: "Two-factor authentication adds an extra layer of security to your account. It requires both your password and an OTP or biometric confirmation to complete transactions."
+
+  utter_upi_registration:
+    - text: "You can register for UPI using any UPI-enabled mobile app like Google Pay, PhonePe, or our bank’s app. Link your account, create a UPI ID, and set your 4 or 6-digit UPI PIN."
+
+  utter_upi_limit:
+    - text: "The daily UPI transaction limit is ₹1 lakh, though some banks may restrict it further. Also, only up to 10 UPI transfers are allowed within 24 hours for security reasons."
+
+  utter_upi_failed_transaction:
+    - text: "If your UPI payment failed but money was debited, don’t worry—it will be reversed automatically within 3 working days. You can check the refund status in your UPI app’s transaction history."
+
+  utter_security_settings:
+    - text: "Always keep your banking passwords private, avoid using public Wi-Fi, and regularly update your PINs. Enable app locks and SMS/email alerts to monitor account activity."
+
+  utter_update_mpin:
+    - text: |
+        To change or update your MPIN, open your SmartBank mobile banking or UPI app, navigate to **Settings → Change MPIN**, and follow the on-screen instructions.  
+        Always keep your MPIN confidential and never share it with anyone.
+        <br><br>
+        Explore SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank update mpin</a>
+
+  utter_email_alerts:
+    - text: |
+        You can enable or disable email alerts through your SmartBank net banking or mobile banking app under **Notification Settings**.  
+        Email alerts keep you updated about every debit, credit, and important account activity.
+        <br><br>
+        Manage alerts via SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank email alerts</a>
+
+  utter_download_statement:
+    - text: |
+        To download your account statement, log in to your SmartBank net banking or mobile banking app and go to the **Account Statement** section.  
+        Select the desired period and choose **Download PDF**.  
+        For older statements beyond the available period, please contact customer support.
+        <br><br>
+        Access SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank e statement</a>
+
+  utter_interest_certificate:
+    - text: |
+        You can download your **Interest Certificate** for the financial year from SmartBank net banking under **Tax Services** or **Certificates**.  
+        This document shows the total interest earned on your deposits during the year.
+        <br><br>
+        Visit SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank interest certificate</a>
+
+  utter_tds_details:
+    - text: |
+        Your TDS (Tax Deducted at Source) details are available in your SmartBank net banking under **Tax Services** or **Form 26AS**.  
+        You can also view consolidated TDS information on the Income Tax Portal using your PAN.
+        <br><br>
+        Check your TDS details online:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank tds details</a>
+
+  utter_check_passbook_status:
+    - text: |
+        You can check the status of your passbook—whether newly issued or updated—by visiting your home branch or contacting SmartBank customer care.  
+        A digital passbook is also available in the mobile app for quick and instant viewing.
+        <br><br>
+        Explore SmartBank Digital Banking features:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Passbook status</a>
+
+  utter_duplicate_statement_request:
+    - text: "To request a duplicate account statement, please visit your branch or send an email from your registered ID. You can also generate one online under 'e-Statements' if available for your account."
+
+  utter_report_fraud:
+    - text: "If you suspect any unauthorized transaction or fraudulent activity, please contact our 24x7 Fraud Helpline immediately at 1800-123-4567 or email fraudreport@smartbank.com. You can also block your card or account"
+
+  utter_phishing_alert:
+    - text: "Beware of phishing messages or emails asking for your PIN, password, or OTP. Our bank never asks for these details. If you receive any suspicious message or link, forward it to phishingalert@smartbank.com."
+
+  utter_account_lock:
+    - text: |
+        If your account or login has been locked due to multiple incorrect password attempts, you can unlock it by resetting your password through SmartBank net banking or mobile banking.  
+        If the issue continues, please contact SmartBank customer care for secure assistance.
+        <br><br>
+        Access SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Account lock</a>
+
+  utter_privacy_policy:
+    - text: |
+        SmartBank values your privacy. All customer data is handled in accordance with RBI guidelines and the Information Technology Act to ensure full security and confidentiality.  
+        You may review our complete privacy policy on the official SmartBank digital portal.
+        <br><br>
+        View SmartBank Privacy & Digital Banking Information:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank privacy policy</a>
+
+  utter_customer_support_contact:
+    - text: |
+        You can reach SmartBank’s customer support 24×7 at **1800-123-0000** or email us at **support@smartbank.com**.  
+        For urgent issues, you can also chat with a live agent during business hours.
+        <br><br>
+        Visit our contact page for more options:  
+        <a href="https://www.smartbank.com/contact/" target="_blank">👉 SmartBank Contact & Support</a>
+
+  utter_difference_savings_current:
+    - text: "A Savings Account is meant for personal use and helps you save money while earning interest. A Current Account is mainly for businesses and allows higher transaction limits but usually doesn't earn interest."
+
+  utter_ifsc_meaning:
+    - text: "IFSC stands for Indian Financial System Code. It’s an 11-character code that uniquely identifies every bank branch in India and is required for NEFT, RTGS, and IMPS transactions."
+
+  utter_swift_code_info:
+    - text: "A SWIFT code (also known as BIC) is used for international money transfers. It identifies your bank globally and consists of 8 to 11 alphanumeric characters. Example: SBININBBXXX for SBI India."
+
+  utter_neft_vs_imps_vs_rtgs:
+    - text: "Here’s the difference:\n\n• NEFT – Transfers in hourly batches, available 24x7.\n• IMPS – Instant fund transfer (limit ₹2 lakh/day).\n• RTGS – For large-value transactions (₹2 lakh+), real-time settlement.\n\nAll modes are secure and RBI-regulated."
+
+  utter_nominee_importance:
+    - text: "A nominee ensures your funds are safely transferred to your chosen person in case of unforeseen events. You can register or update a nominee anytime through internet banking or by submitting a form at your branch."
+
+  utter_cibil_score:
+    - text: "A CIBIL score is a 3-digit number (300–900) that represents your creditworthiness. A score above 750 is considered good. You can check it for free on CIBIL’s official website or through our bank app."
+
+  utter_rbi_guidelines:
+    - text: "All banks in India operate under the supervision of the Reserve Bank of India (RBI). RBI issues policies on interest rates, KYC, fraud protection, and digital payments to ensure transparency and safety for customers."
+
+  utter_inactive_account_fees:
+    - text: "If your account remains inactive for more than 2 years, it may be marked dormant. Some banks may charge a small reactivation or maintenance fee. You can avoid this by doing at least one transaction every few months."
+
+  utter_cash_deposit_limit:
+    - text: "Cash deposit limits vary by account type. Savings Accounts usually allow ₹1–2 lakh per day without PAN, while Current Accounts have higher limits. Deposits above ₹2 lakh may require PAN and source declaration."
+
+  utter_daily_withdrawal_limit:
+    - text: "ATM withdrawal limits depend on your card type. For most debit cards, the daily limit is between ₹25,000 and ₹50,000. You can check or modify your limit in your mobile banking app."
+
+  utter_credit_card_offers:
+    - text: |
+        We’re currently offering exciting SmartBank credit card deals!  
+        Enjoy cashback up to **5%**, travel rewards, lounge access, and fuel surcharge waivers.  
+        Apply through net banking or visit your nearest SmartBank branch to find the best card for you.
+        <br><br>
+        Explore SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Credit card offers</a>
+
+  utter_loan_offers:
+    - text: |
+        Special limited-period SmartBank loan offers are now live!  
+        Personal loans start at **10.25% p.a.**, and home loans at **8.45% p.a.**  
+        Apply online or visit your nearest branch to check your eligibility and get personalized offers.
+        <br><br>
+        View SmartBank Digital Banking services:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Loan offers</a>
+
+  utter_rewards_points:
+    - text: |
+        Earn and redeem reward points every time you use your SmartBank debit or credit card.  
+        You can view your reward balance and redeem points for vouchers, discounts, travel benefits, or air miles through the **Rewards** section in your SmartBank mobile app.
+        <br><br>
+        Manage your digital banking services:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Reward points</a>
+
+  utter_festive_offers:
+    - text: |
+        Celebrate the festive season with exclusive SmartBank offers!  
+        Enjoy **zero processing fees** on home and car loans, and get **10% cashback** on select credit cards.  
+        Offers valid till **31st December** — apply today!
+        <br><br>
+        Explore festive offers on SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Festive offers</a>
+
+  utter_refer_friend:
+    - text: |
+        Refer your friends to open an account with SmartBank and earn **₹500 cashback** when they complete their first transaction.  
+        Share your referral code from the **Refer & Earn** section in your mobile banking app.
+        <br><br>
+        Access referral services on SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Refer friend</a>
+
+  utter_update_kyc:
+    - text: |
+        To update your KYC details, visit your nearest SmartBank branch with valid ID and address proof such as Aadhaar, PAN card, or passport.  
+        Some KYC updates can also be completed online through the net banking portal under **Profile Settings**.
+        <br><br>
+        Update KYC using SmartBank Digital Banking:  
+        <a href="https://www.smartbank.com/digital-banking/" target="_blank">👉 SmartBank Update</a>
+
+  utter_branch_locator:
+    - text: |
+        You can easily find your nearest SmartBank branch or ATM using our **Branch Locator** tool.  
+        Just enter your city, area, or PIN code to view nearby branches, operating hours, and available services.  
+        <br><br>
+        Find a branch near you:  
+        <a href="https://www.smartbank.com/locations/" target="_blank">👉 SmartBank Branch & ATM Locator</a>
+
+  utter_working_hours:
+    - text: "Our regular branch working hours are Monday to Friday, 10:00 AM to 4:00 PM, and Saturday (1st, 3rd, 5th) from 10:00 AM to 2:00 PM. Branches remain closed on Sundays and public holidays."
+
+  utter_holiday_list:
+    - text: |
+        You can view the complete list of SmartBank holidays on our official website under the **Holiday Calendar** section.  
+        Major holidays include Republic Day, Independence Day, Diwali, Christmas, and other regional bank holidays based on your state.
+        <br><br>
+        View the full holiday list here:  
+        <a href="https://www.bankbranchlocator.com/smartbank-reviews.html" target="_blank">👉 SmartBank Holiday & Branch Information</a>
+
+  utter_feedback_complaint:
+    - text: |
+        We're sorry if you experienced any inconvenience.  
+        You can submit your feedback or file a complaint by emailing **care@smartbank.com**, or by using the **Feedback Form** available in your SmartBank net banking dashboard.  
+        Our support team aims to resolve all concerns within **3 working days**.
+        <br><br>
+        Share feedback or check branch reviews:  
+        <a href="https://www.bankbranchlocator.com/smartbank-reviews.html" target="_blank">👉 SmartBank Feedback & Reviews</a>
+
+  utter_foreign_exchange:
+    - text: "We offer foreign exchange services for major global currencies. You can visit select branches or our Forex partners for currency exchange, wire transfers, or travel cards. Please carry valid ID and PAN."
+
+  utter_cheque_status:
+    - text: |
+        You can check the status of your cheque in the **Cheque Services** section of your SmartBank mobile banking or net banking app.  
+        For detailed information, you may also contact SmartBank customer care with your cheque number.
+        <br><br>
+        Visit SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank Cheque status</a>
+
+  utter_stop_cheque_payment:
+    - text: |
+        For security reasons, cheque stop-payment requests cannot be processed through chat.  
+        Please use your SmartBank net banking, mobile banking app, or contact customer care to place a stop-payment request by providing your cheque number and account details.
+        <br><br>
+        Access SmartBank digital services:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank Stop Cheque payment</a>
+
+  utter_cheque_book_request:
+    - text: |
+        To request a new cheque book, log in to your SmartBank net banking or mobile banking app and go to **Cheque Services**.  
+        You may also submit a request form at your home branch if you prefer an offline option.
+        <br><br>
+        Request services via SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank Cheque book request</a>
+
+  utter_locker_facility:
+    - text: |
+        SmartBank offers secure locker facilities at select branches.  
+        Locker sizes and rental charges vary by location.  
+        To apply for a locker, please visit your nearest branch with valid ID proof and your account details.
+        <br><br>
+        Learn more on SmartBank online:  
+        <a href="https://www.smartbank.com" target="_blank">👉 SmartBank Locker facility</a>
+
+  utter_greet:
+  - text: "Hello! 👋 I’m your Assistant from your most trusted Smart Bank . How may I serve you today?"
+
+  utter_goodbye:
+  - text: "Bye, have a nice day ahead from smart bank team"
+  
+  utter_affirm:
+    - text: "Great! Let's continue."
+
+  utter_deny:
+    - text: "No problem, I’ve cancelled the request."
+
+  utter_help:
+    - text: "I can help you with checking balance, transferring money, paying bills, loans, card services, and transactions."
+
+  utter_out_of_scope:
+    - text: "Sorry, I can only help with banking-related queries."
+
+  utter_ask_rephrase:
+    - text: "I'm sorry, I didn't understand. Can you rephrase?"
+
+  utter_ask_name:
+    - text: "Sure! May I have your full name?"
+
+  utter_ask_balance:
+    - text: "Great choice! How much would you like to deposit initially?"
+
+  utter_ask_phone:
+    - text: "Please share your mobile number." 
+
+  utter_ask_account_type:
+    - text: "Thanks . Which type of account would you like(Savings/Current)"
+
+  utter_ask_account_type_min_balance:
+    - text: "Sure! For which account type — Savings, Current?"
+
+  utter_min_balance:
+    - text: "The minimum balance for {account_type} account is ₹{amount}."
+
+  utter_update_personal_details:
+    - text: "Sure! For updating your personal details, you’ll need to visit your bank branch. Our staff there will help you verify your identity and make the necessary updates."
+
+  utter_account_number_lost:
+    - text: "You can recover your account number through net banking or by checking the first page of your passbook."
+
+  utter_ask_email:
+    - text: "Could you please provide your email address?"
+
+  utter_ask_otp:
+    - text: "Great, I’ve sent a one-time password (OTP) to {email}. Please enter it to verify your account."
+
+  utter_check_balance:
+    - text: "Verified ✅. The balance for your account (linked to {email}) is ₹45,780.35 as of today."
+
+  utter_book_appointment:
+    - text: "To schedule an appointment you have to visit our official website that's smart bank." 
+
+  utter_emi_options_personal:
+    - text:  "We have various options available for EMIs starting from 6 months to longer till 5 years.We serve to provide you best emi plans with lowest interest rates."
+
+  utter_open_account:
+    - text: "Great! You can open a new account instantly by clicking the link below:<br><br><a href='https://b064209216.account-open.online-banking-services.com/openaccount/#!/acctopening' target='_blank'>👉 Open Account</a>"
+  
+  utter_bill_payment:
+    - text: |
+        Sure! With our Online Bill Pay service, you can pay all your bills in one place — securely and quickly.  
+        Here’s how to get started:  
+        1. Log in to your SmartBank online banking account.  
+        2. Under “Move Money” or “Payments”, click **Bill Pay**.  
+        3. Enroll if you’re a first-time user, then add your payee and schedule a payment.  
+        4. You can also set up recurring payments and receive alerts when payments are processed.  
+        <br><br>
+        Click here to go directly: <a href="https://www.smartbank.com/digital-banking/online-bill-pay/" target="_blank">👉 SmartBank Online Bill Pay</a>
+
+  utter_cannot_share_others_balance:
+    - text: |
+        For security reasons, I’m unable to access or share anyone else’s account balance or banking details.  
+        Your friend can check their balance through SmartBank’s mobile app, net banking, or by contacting customer support directly.
+  
+  utter_session_expired:
+    - text: "Your session has expired due to inactivity. How can I help you now?"
+
+  utter_handoff_message:
+    - text: |
+        Sure! You can connect with a human support agent. Please call at this number 1800 900 321
+
+  utter_default:
+    - text: "I'm sorry, I didn’t quite understand that. 🤔 Can you rephrase?"
+    
+
+forms:
+
+  minimum_balance_form:
+    required_slots:
+      - account_type
+
+actions:
+  - action_minimum_balance
+  - action_send_otp_email
+  - action_validate_otp
+  - action_verify_balance
+  - action_mini_statement
+  - action_handoff_to_agent
+
+session_config:
+  session_expiration_time: 6     
+  carry_over_slots_to_new_session: false   
+

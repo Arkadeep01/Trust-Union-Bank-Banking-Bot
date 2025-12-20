@@ -1,0 +1,50 @@
+language: en
+
+pipeline:
+- name: WhitespaceTokenizer
+
+- name: RegexFeaturizer
+  use_lookup_tables: true
+  use_regexes: true
+  use_word_boundaries: false
+
+- name: LexicalSyntacticFeaturizer
+
+- name: CountVectorsFeaturizer
+
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+
+- name: DIETClassifier
+  epochs: 100
+  entity_recognition: true
+  constrain_similarities: true
+
+- name: EntitySynonymMapper
+
+- name: ResponseSelector
+  epochs: 100
+
+- name: FallbackClassifier
+  threshold: 0.45
+  ambiguity_threshold: 0.15
+
+policies:
+- name: MemoizationPolicy
+
+- name: RulePolicy
+  core_fallback_threshold: 0.3
+  core_fallback_action_name: "action_default_fallback"
+
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true
+
+assistant_id: 20251027-192855-chewy-texture

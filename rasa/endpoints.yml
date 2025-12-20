@@ -1,0 +1,10 @@
+tracker_store:
+  type: SQL
+  dialect: postgresql
+  url: ${https://rdephpoerjonzsjnbrub.supabase.co}
+  db: trustunionbank
+  username: ${postgres}
+  password: ${GHK0016XK997}
+
+action_endpoint:
+  url: "http://localhost:5055/webhook"

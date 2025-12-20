@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Union Bank - Your Trusted Banking Partner</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+</head>
+<body class="light-theme">
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <img src="/static/images/bank_logo.png" alt="Trust Union Bank" class="bank-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="logo-text" style="display:none;">Trust Union Bank</div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/personal-banking" class="nav-link">Personal Banking</a></li>
+                    <li><a href="/loans" class="nav-link">Loans</a></li>
+                    <li><a href="/cards" class="nav-link">Cards</a></li>
+                    <li><a href="/investments" class="nav-link">Investments</a></li>
+                    <li><a href="/about" class="nav-link">About Us</a></li>
+                    <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                    <a href="/register" class="btn btn-secondary">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Trust Union Bank</h1>
+            <p class="hero-subtitle">Your trusted partner for financial growth and security</p>
+            <div class="hero-buttons">
+                <a href="/register" class="btn btn-hero-primary">Open Account</a>
+                <a href="/personal-banking" class="btn btn-hero-secondary">Internet Banking</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-card"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>Personal Banking</h3>
+                    <p>Savings, Current, and Fixed Deposit accounts tailored to your needs</p>
+                    <a href="/personal-banking" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏦</div>
+                    <h3>Loans</h3>
+                    <p>Home, Personal, Vehicle, and Education loans with competitive rates</p>
+                    <a href="/loans" class="service-link">Apply Now →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💎</div>
+                    <h3>Credit & Debit Cards</h3>
+                    <p>Secure cards with rewards, cashback, and exclusive offers</p>
+                    <a href="/cards" class="service-link">Explore Cards →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Investments</h3>
+                    <p>FD, RD, Mutual Funds, and more investment options</p>
+                    <a href="/investments" class="service-link">Invest Now →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Digital Banking</h3>
+                    <p>24/7 banking through mobile app and internet banking</p>
+                    <a href="/digital-banking" class="service-link">Get Started →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Insurance</h3>
+                    <p>Life, Health, and General insurance products</p>
+                    <a href="/insurance" class="service-link">View Plans →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RBI Guidelines Section -->
+    <section class="rbi-section">
+        <div class="container">
+            <h2 class="section-title">RBI Guidelines & Important Information</h2>
+            <div class="rbi-grid">
+                <div class="rbi-card">
+                    <h3>Know Your Customer (KYC)</h3>
+                    <p>Complete your KYC to ensure uninterrupted banking services. Update your documents regularly.</p>
+                    <a href="/kyc" class="rbi-link">Read More →</a>
+                </div>
+                <div class="rbi-card">
+                    <h3>Deposit Insurance</h3>
+                    <p>Your deposits are insured up to ₹5,00,000 per depositor per bank by DICGC.</p>
+                    <a href="/deposit-insurance" class="rbi-link">Read More →</a>
+                </div>
+                <div class="rbi-card">
+                    <h3>Grievance Redressal</h3>
+                    <p>We are committed to resolving your concerns. Contact our customer care for assistance.</p>
+                    <a href="/grievance" class="rbi-link">Read More →</a>
+                </div>
+                <div class="rbi-card">
+                    <h3>Fraud Prevention</h3>
+                    <p>Stay protected from fraud. Never share your PIN, OTP, or banking credentials.</p>
+                    <a href="/fraud-prevention" class="rbi-link">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Trust Union Bank?</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <div>
+                        <h4>24/7 Customer Support</h4>
+                        <p>Round-the-clock assistance via chat, phone, or email</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <div>
+                        <h4>Secure Banking</h4>
+                        <p>Multi-layer security with encryption and fraud detection</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <div>
+                        <h4>Competitive Interest Rates</h4>
+                        <p>Best-in-class rates on savings and fixed deposits</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-check">✓</span>
+                    <div>
+                        <h4>Easy Account Management</h4>
+                        <p>Manage your accounts, pay bills, and transfer funds seamlessly</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Trust Union Bank</h3>
+                    <p>Your trusted banking partner since 1985</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/personal-banking">Personal Banking</a></li>
+                        <li><a href="/loans">Loans</a></li>
+                        <li><a href="/cards">Cards</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Branch Information</h4>
+                    <p><strong>Kolkata Main Branch</strong></p>
+                    <p>Park Street, Kolkata</p>
+                    <p>Branch Code: TRU001</p>
+                    <p>Working Hours: 10:00 AM - 6:00 PM</p>
+                    <p>Phone: 033-23451234</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <form class="contact-form" id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="3" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Trust Union Bank. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Bot Logo (Fixed Position) -->
+    <div class="chat-bot-trigger" id="chatBotTrigger">
+        <div class="bot-logo-container">
+            <div class="glow-effect"></div>
+            <div class="bot-icon">🤖</div>
+            <span class="bot-label">Trusti</span>
+        </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3 class="bot-name">Trusti</h3>
+                        <p class="session-id" id="sessionId">Session: Loading...</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hello! I'm Trusti, your banking assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-input-actions">
+                <button class="lang-button" id="langButton" title="Change Language">🌐</button>
+                <button class="preference-button" id="preferenceButton" title="Preferences">⚙️</button>
+            </div>
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." />
+                <button class="voice-button" id="voiceButton" title="Voice Input">🎤</button>
+                <button class="send-button" id="sendButton" title="Send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Modal -->
+    <div class="modal" id="langModal">
+        <div class="modal-content">
+            <span class="modal-close" id="langModalClose">&times;</span>
+            <h2>Select Language</h2>
+            <div class="lang-options">
+                <button class="lang-option" data-lang="en">English</button>
+                <button class="lang-option" data-lang="bn">বাংলা (Bengali)</button>
+                <button class="lang-option" data-lang="hi">हिंदी (Hindi)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preferences Modal -->
+    <div class="modal" id="preferenceModal">
+        <div class="modal-content">
+            <span class="modal-close" id="preferenceModalClose">&times;</span>
+            <h2>Preferences</h2>
+            <div class="preference-options">
+                <label>
+                    <input type="checkbox" id="soundNotifications"> Sound Notifications
+                </label>
+                <label>
+                    <input type="checkbox" id="autoScroll"> Auto Scroll Messages
+                </label>
+                <label>
+                    <input type="checkbox" id="compactMode"> Compact Mode
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

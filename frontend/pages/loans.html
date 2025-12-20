@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans - Trust Union Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body class="light-theme">
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-section">
+                    <a href="/">Trust Union Bank</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/personal-banking" class="nav-link">Personal Banking</a></li>
+                    <li><a href="/loans" class="nav-link active">Loans</a></li>
+                    <li><a href="/cards" class="nav-link">Cards</a></li>
+                    <li><a href="/investments" class="nav-link">Investments</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <a href="/login" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Loans</h1>
+                <p>Choose the right loan for your needs</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Home Loan</h3>
+                    <p>Make your dream home a reality with competitive interest rates and flexible repayment options.</p>
+                    <ul class="feature-list">
+                        <li>Interest rates starting from 8.5%</li>
+                        <li>Loan amount up to ₹5 Crores</li>
+                        <li>Repayment tenure up to 30 years</li>
+                    </ul>
+                    <a href="/loans/apply?type=home" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <h3>Vehicle Loan</h3>
+                    <p>Drive away with your dream vehicle. Quick approval and hassle-free process.</p>
+                    <ul class="feature-list">
+                        <li>Interest rates starting from 9.0%</li>
+                        <li>Loan amount up to ₹50 Lakhs</li>
+                        <li>Repayment tenure up to 7 years</li>
+                    </ul>
+                    <a href="/loans/apply?type=vehicle" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👤</div>
+                    <h3>Personal Loan</h3>
+                    <p>Meet your personal financial needs with instant approval and minimal documentation.</p>
+                    <ul class="feature-list">
+                        <li>Interest rates starting from 10.5%</li>
+                        <li>Loan amount up to ₹25 Lakhs</li>
+                        <li>Repayment tenure up to 5 years</li>
+                    </ul>
+                    <a href="/loans/apply?type=personal" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Education Loan</h3>
+                    <p>Invest in your future with education loans for domestic and international studies.</p>
+                    <ul class="feature-list">
+                        <li>Interest rates starting from 8.0%</li>
+                        <li>Loan amount up to ₹1 Crore</li>
+                        <li>Repayment tenure up to 15 years</li>
+                    </ul>
+                    <a href="/loans/apply?type=education" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+
+            <section class="info-section">
+                <h2>Loan Management</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Check Loan Balance</h4>
+                        <p>View your outstanding loan balance and next EMI due date.</p>
+                        <a href="/loans/balance" class="info-link">Check Balance →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>EMI Schedule</h4>
+                        <p>View your complete EMI payment schedule.</p>
+                        <a href="/loans/emi-schedule" class="info-link">View Schedule →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Loan Statements</h4>
+                        <p>Download your loan statements and certificates.</p>
+                        <a href="/loans/statements" class="info-link">Download →</a>
+                    </div>
+                    <div class="info-card">
+                        <h4>Prepayment</h4>
+                        <p>Make prepayments or foreclose your loan.</p>
+                        <a href="/loans/prepay" class="info-link">Prepay Now →</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Chat Bot Trigger -->
+    <div class="chat-bot-trigger" id="chatBotTrigger">
+        <div class="bot-logo-container">
+            <div class="glow-effect"></div>
+            <div class="bot-icon">🤖</div>
+            <span class="bot-label">Trusti</span>
+        </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <div class="chat-header-content">
+                <div class="bot-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h3 class="bot-name">Trusti</h3>
+                        <p class="session-id" id="sessionId">Session: Loading...</p>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatClose">✕</button>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hello! I'm Trusti, your banking assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <div class="chat-input-actions">
+                <button class="lang-button" id="langButton" title="Change Language">🌐</button>
+                <button class="preference-button" id="preferenceButton" title="Preferences">⚙️</button>
+            </div>
+            <div class="chat-input-wrapper">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." />
+                <button class="voice-button" id="voiceButton" title="Voice Input">🎤</button>
+                <button class="send-button" id="sendButton" title="Send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Modal -->
+    <div class="modal" id="langModal">
+        <div class="modal-content">
+            <span class="modal-close" id="langModalClose">&times;</span>
+            <h2>Select Language</h2>
+            <div class="lang-options">
+                <button class="lang-option" data-lang="en">English</button>
+                <button class="lang-option" data-lang="bn">বাংলা (Bengali)</button>
+                <button class="lang-option" data-lang="hi">हिंदी (Hindi)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preferences Modal -->
+    <div class="modal" id="preferenceModal">
+        <div class="modal-content">
+            <span class="modal-close" id="preferenceModalClose">&times;</span>
+            <h2>Preferences</h2>
+            <div class="preference-options">
+                <label>
+                    <input type="checkbox" id="soundNotifications"> Sound Notifications
+                </label>
+                <label>
+                    <input type="checkbox" id="autoScroll"> Auto Scroll Messages
+                </label>
+                <label>
+                    <input type="checkbox" id="compactMode"> Compact Mode
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="/static/css/chat.css">
+    <script src="/static/js/config.js"></script>
+    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

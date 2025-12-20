@@ -1,0 +1,48 @@
+version: "3.1"
+
+stories:
+
+- story: minimum balance flow
+  steps:
+    - intent: minimum_balance
+    - action: minimum_balance_form
+    - active_loop: minimum_balance_form
+    - intent: provide_account_type
+    - action: minimum_balance_form
+    - active_loop: null
+    - action: action_minimum_balance
+
+- story: Check balance flow
+  steps:
+    - intent: check_balance
+    - action: utter_ask_email
+    - intent: provide_email
+      entities:
+        - email: "rahul.mehta@gmail.com"
+    - action: action_send_otp_email
+    - action: utter_ask_otp
+    - intent: provide_otp
+      entities:
+        - otp: "563290"
+    - action: action_validate_otp
+    - action: action_verify_balance
+
+- story: Update personal details
+  steps:
+    - intent: update_personal_details
+    - action: utter_update_personal_details
+
+- story: Account number lost
+  steps:
+    - intent: account_number_lost
+    - action: utter_account_number_lost
+
+- story: display mini statement using phone number
+  steps:
+    - intent: request_mini_statement
+    - action: utter_ask_phone
+    - intent: provide_phone
+      entities:
+        - phone: "9455094680"
+    - action: action_mini_statement    
+

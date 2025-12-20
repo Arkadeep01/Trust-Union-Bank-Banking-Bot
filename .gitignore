@@ -1,0 +1,85 @@
+# ======================================================
+# 🛡️ SECURITY & SECRETS (CRITICAL)
+# ======================================================
+
+# ======================================================
+# 🐍 PYTHON & VIRTUAL ENVIRONMENTS
+# ======================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+env/
+venv/
+.venv/
+noraenv/
+
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ======================================================
+# 🧠 RASA / MACHINE LEARNING ARTIFACTS
+# ======================================================
+rasa/models/                 # Rasa trained models
+*.tar.gz                # Rasa model archives
+*.joblib
+*.pkl
+*.npy
+*.h5
+*.onnx
+
+# Training / generated data
+*.csv
+database/data/*.sql
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ======================================================
+# 🌐 FRONTEND & GENERATED ASSETS
+# ======================================================
+bankbot_tts.mp3
+frontend/static/js/config.js
+
+# Build artifacts
+frontend/dist/
+frontend/build/
+
+# ======================================================
+# ⚙️ BUILD, DEPLOYMENT & RUNTIME
+# ======================================================
+build/
+dist/
+*.egg-info/
+gunicorn_config.py
+*.log
+logs/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# ======================================================
+# 🖥️ OS & EDITOR FILES
+# ======================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================================================
+# 🔐 TEMP / MISC
+# ======================================================
+tmp/
+temp/
+.cache/

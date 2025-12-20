@@ -1,0 +1,4 @@
+{
+  "INTENT_MODEL_FILE": "G:\\Bank_Bot\\nlu_core\\models\\intent_classifier\\banking_intent_model.pkl",
+  "EMBEDDINGS_FILE": "G:\\Bank_Bot\\nlu_core\\models\\intent_classifier\\Embedding\\query_embeddings.npy"
+}
