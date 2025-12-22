@@ -37,32 +37,32 @@ Install the following before starting:
 
 ## 📦 Installation & Setup
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 ```bash
 git clone [https://github.com/Arkadeep01/Trust-Union-Bank-Banking-Bot.git](https://github.com/Arkadeep01/Trust-Union-Bank-Banking-Bot.git)
 cd Trust-Union-Bank-Banking-Bot
 ```
 
-### 2. Virtual Environment
-# Windows
+## 2. Virtual Environment
+### Windows
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
-# Linux / MacOS
+### Linux / MacOS
 ```
 python3 -m venv venv
 source venv/bin/activate
 ```
 
 
-### 3. Install Dependencies
+## 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Environment Configuration
-# Create a local .env file (not committed to Git):
+## 4. Environment Configuration
+### Create a local .env file (not committed to Git):
 ```bash
 cp .env.example .env
 ```
@@ -71,3 +71,71 @@ Edit .env and provide values such as:
 - SMTP credentials
 - JWT settings
 - Rasa endpoint URL
+
+
+## 5. JWT Key Management (REQUIRED)
+#### JWT authentication uses RSA asymmetric keys.
+### 📁 Required Directory Structure
+```text
+config/
+├── jwt_keys/
+│   ├── private_key.pem
+│   └── public_key.pem
+├── secrets.json
+├── models.json
+└── settings.py
+```
+
+1️⃣ Generate JWT Keys
+```bash
+mkdir -p config/jwt_keys
+
+# Generate private key
+openssl genrsa -out config/jwt_keys/private_key.pem 2048
+
+# Generate public key
+openssl rsa -in config/jwt_keys/private_key.pem -pubout -out config/jwt_keys/public_key.pem
+```
+2️⃣ Create config/secrets.json
+```json
+{
+  "jwt": {
+    "algorithm": "RS256",
+    "access_token_exp_minutes": 15,
+    "refresh_token_exp_days": 7
+  },
+  "security": {
+    "otp_length": 6,
+    "otp_expiry_minutes": 5,
+    "max_otp_attempts": 3
+  }
+}
+```
+3️⃣ Create config/models.json
+```json
+{
+  "sentiment_model": "distilbert-base-uncased",
+  "intent_threshold": 0.65
+}
+```
+
+## 🗄️ Database Setup
+1. Create a PostgreSQL database.
+2. Execute SQL files in order:
+```text
+schema.sql
+schema_indexes.sql
+```
+
+## 🤖 Rasa Training & Execution
+```bash
+cd rasa
+rasa train
+cd ..
+```
+
+## ▶️ Run the Application
+```bash
+▶️ Run the Application
+```
+
