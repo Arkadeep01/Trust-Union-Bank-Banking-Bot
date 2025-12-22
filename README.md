@@ -136,6 +136,7 @@ cd ..
 
 ## ▶️ Run the Application
 ```bash
-▶️ Run the Application
+python -m api.api_server
 ```
+
 
