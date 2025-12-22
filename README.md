@@ -41,41 +41,33 @@ Install the following before starting:
 ```bash
 git clone [https://github.com/Arkadeep01/Trust-Union-Bank-Banking-Bot.git](https://github.com/Arkadeep01/Trust-Union-Bank-Banking-Bot.git)
 cd Trust-Union-Bank-Banking-Bot
-2. Virtual Environment (Recommended)Bash# Windows
-python -m venv venv
-.\venv\Scripts\activate
+```
 
-# Linux / macOS
+### 2. Virtual Environment
+# Windows
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+# Linux / MacOS
+```
 python3 -m venv venv
 source venv/bin/activate
-3. Install DependenciesBashpip install -r requirements.txt
-4. Environment ConfigurationBashcp .env.example .env
-# Edit .env and provide your DB and SMTP credentials
-🔐 Security Configuration (Required)1. Generate JWT RSA KeysJWT signing uses asymmetric RSA keys. Create the directory and generate the keys:Bashmkdir -p config/jwt_keys
+```
 
-# Generate private key
-openssl genrsa -out config/jwt_keys/private_key.pem 2048
 
-# Generate public key
-openssl rsa -in config/jwt_keys/private_key.pem -pubout -out config/jwt_keys/public_key.pem
-2. Create Local Config FilesCreate these files in the config/ directory:File: config/secrets.jsonJSON{
-  "jwt": {
-    "algorithm": "RS256",
-    "access_token_exp_minutes": 15,
-    "refresh_token_exp_days": 7
-  },
-  "security": {
-    "otp_length": 6,
-    "otp_expiry_minutes": 5,
-    "max_otp_attempts": 3
-  }
-}
-File: config/models.jsonJSON{
-  "sentiment_model": "distilbert-base-uncased",
-  "intent_threshold": 0.65
-}
-🗄️ Database SetupCreate a PostgreSQL database and execute the SQL files in this order:schema.sqlschema_indexes.sql🤖 Training & ExecutionTrain the Rasa ModelRasa models are not stored in GitHub. You must train them locally:Bashcd rasa
-rasa train
-cd ..
-Run the ApplicationFrom the project root:Bashpython -m api.api_server
-🛠️ TroubleshootingIssueSolutionRasa not foundRun pip install rasa inside your venv.ModuleNotFoundErrorEnsure you run the server from the root directory.JWT ErrorsVerify that private_key.pem exists in config/jwt_keys/.DB Connection RefusedCheck your .env credentials and Postgres status.🔒 Security NoticeThe following items are strictly ignored by .gitignore to ensure security:.env & .env.localconfig/jwt_keys/*.pemrasa/models/*.tar.gzconfig/secrets.jsonconfig/models.json
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Environment Configuration
+# Create a local .env file (not committed to Git):
+```bash
+cp .env.example .env
+```
+Edit .env and provide values such as:
+- Database URL / credentials
+- SMTP credentials
+- JWT settings
+- Rasa endpoint URL
